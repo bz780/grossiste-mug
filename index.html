@@ -356,7 +356,6 @@ nav .btn-nav:hover { background: var(--clay-700); }
 </style>
 <!-- refreshed 2026-04-21 -->
 <!-- refreshed 2026-04-21 -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
 </head>
 <body>
 
@@ -892,8 +891,6 @@ nav .btn-nav:hover { background: var(--clay-700); }
             <label for="message">Votre besoin *</label>
             <textarea id="message" name="message" rows="4" placeholder="Décrivez vos besoins : type de mug, quantité, couleur, marquage logo, délai souhaité..." required></textarea>
           </div>
-          
-<div class="cf-turnstile" data-sitekey="0x4AAAAAADFQDtKGYbZUTtyX" data-theme="light" data-size="flexible" style="margin:14px 0"></div>
 <button type="submit" class="btn-submit">Envoyer ma demande de devis</button>
         </form>
       <div id="form-success" style="display:none;padding:18px 20px;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;color:#166534;margin-top:16px;font-weight:500;font-size:.95rem;">
@@ -961,16 +958,7 @@ nav .btn-nav:hover { background: var(--clay-700); }
 
     // Anti-bot : honeypot _gotcha
     const gotcha = form.querySelector('input[name="_gotcha"]');
-    if (gotcha && gotcha.value) return;
-
-    // Anti-bot : Turnstile token
-    const tsResp = form.querySelector('[name="cf-turnstile-response"]');
-    if (!tsResp || !tsResp.value) {
-      const errorEl = document.getElementById('form-error');
-      if (errorEl) {
-        errorEl.textContent = '✗ Veuillez compléter la vérification anti-robot avant d\'envoyer.';
-        errorEl.style.display = 'block';
-      } else {
+    if (gotcha && gotcha.value) return; else {
         alert('Veuillez compléter la vérification anti-robot.');
       }
       return;
